@@ -1,8 +1,8 @@
 package com.event.example.springeventexample.order.application
 
-import com.event.example.springeventexample.order.domain.Order
-import com.event.example.springeventexample.order.domain.OrderId
+import com.event.example.springeventexample.order.domain.entity.Order
 import com.event.example.springeventexample.order.domain.repository.OrderRepository
+import com.event.example.springeventexample.order.domain.value.OrderId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

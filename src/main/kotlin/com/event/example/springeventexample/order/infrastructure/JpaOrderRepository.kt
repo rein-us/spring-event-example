@@ -1,10 +1,5 @@
 package com.event.example.springeventexample.order.infrastructure
 
-import com.event.example.springeventexample.order.domain.Order
-import com.event.example.springeventexample.order.domain.repository.OrderRepository
-import org.springframework.stereotype.Repository
-import javax.persistence.EntityManager
-import javax.persistence.PersistenceContext
 /*
 
 @Repository
