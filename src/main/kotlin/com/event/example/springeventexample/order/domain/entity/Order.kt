@@ -2,6 +2,7 @@ package com.event.example.springeventexample.order.domain.entity
 
 import com.event.example.springeventexample.order.domain.entity.LongIdConverter.Companion.NOT_EXIST_ID
 import com.event.example.springeventexample.order.domain.entity.OrderingTimeConverter.Companion.NOT_EXIST_ORDERING_TIME
+import com.event.example.springeventexample.order.domain.value.OrderState
 import java.math.BigInteger
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -20,13 +21,17 @@ class Order(
     @Convert(converter = LongIdConverter::class)
     private val userId: Long,
 
+    @Column(name = "order_state")
+    @Enumerated(EnumType.STRING)
+    private val state: OrderState = OrderState.PAYMENT_WAITING,
+    
     @Column(name = "ordering_time")
     @Convert(converter = OrderingTimeConverter::class)
     private val orderingTime: Long = ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()).toInstant().toEpochMilli()
 ) {
     constructor(userId: Long): this(id = NOT_EXIST_ID, userId = userId)
     
-    protected constructor(): this(NOT_EXIST_ID, NOT_EXIST_ID, NOT_EXIST_ORDERING_TIME)
+    protected constructor(): this(id = NOT_EXIST_ID, userId = NOT_EXIST_ID, orderingTime = NOT_EXIST_ORDERING_TIME)
     
     companion object { 
         val NOT_EXIST = Order() 
