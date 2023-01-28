@@ -20,13 +20,13 @@ class OrderController {
     private lateinit var createOrderService: CreateOrderService
     
     @GetMapping("/{id}")
-    fun search(@PathVariable("id") id: Long): ResponseEntity<Any> {
+    fun search(@PathVariable("id") id: Long): ResponseEntity<OrderId> {
         val order = searchOrderService.searchBy(id)
         if (!order.exist()) {
             return ResponseEntity.notFound().build()
         }
         println(">> orderId=${order!!.id}")
-        return ResponseEntity.ok().build()
+        return ResponseEntity.ok(OrderId(order.id))
     }
     
     @PostMapping(produces = ["application/json"])
