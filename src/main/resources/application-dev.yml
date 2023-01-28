@@ -1,4 +1,9 @@
 spring:
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
   h2:
     console:
       enabled: true

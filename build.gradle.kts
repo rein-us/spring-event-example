@@ -20,6 +20,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    runtimeOnly("org.springframework.boot:spring-boot-devtools")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.1")
 
