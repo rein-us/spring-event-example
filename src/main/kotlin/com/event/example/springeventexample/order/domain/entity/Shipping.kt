@@ -19,21 +19,11 @@ class Address(
     @Convert(converter = ShippingConverter::class)
     private val city: String,
     
-    @Column(name = "address_addr1")
+    @Column(name = "address_addr")
     @Convert(converter = ShippingConverter::class)
-    private val address1: String,
-    
-    @Column(name = "address_addr2")
-    @Convert(converter = ShippingConverter::class)
-    private val address2: String,
-    
-    @Column(name = "address_addr3")
-    @Convert(converter = ShippingConverter::class)
-    private val address3: String
+    private val address: String
 ) {
     protected constructor(): this(
-        ShippingConverter.NOT_EXIST_ADDRESS,
-        ShippingConverter.NOT_EXIST_ADDRESS,
         ShippingConverter.NOT_EXIST_ADDRESS,
         ShippingConverter.NOT_EXIST_ADDRESS,
         ShippingConverter.NOT_EXIST_ADDRESS,

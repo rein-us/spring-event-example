@@ -4,7 +4,9 @@ import com.event.example.springeventexample.order.application.CreateOrderService
 import com.event.example.springeventexample.order.application.OrderCreateRequest
 import com.event.example.springeventexample.order.application.SearchOrderService
 import com.event.example.springeventexample.order.domain.entity.exist
+import com.event.example.springeventexample.order.presentation.response.OrderId
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -28,8 +30,8 @@ class OrderController {
     }
     
     @PostMapping(produces = ["application/json"])
-    fun create(@RequestBody request: OrderCreateRequest): ResponseEntity<Long> {
+    fun create(@RequestBody request: OrderCreateRequest): ResponseEntity<OrderId> {
         val orderId = createOrderService.create(request)
-        return ResponseEntity.ok(orderId)
+        return ResponseEntity.status(HttpStatus.CREATED).body(OrderId(orderId))
     }
 }

@@ -10,7 +10,18 @@ class CreateOrderService(
     @Autowired private val orderRepository: OrderRepository
 ) {
     fun create(request: OrderCreateRequest): Long {
-        val order = Order(userId = request.userId)
+        val order = with(request) {
+            Order(
+                this.userId, 
+                this.productId, 
+                this.price, 
+                this.count,
+                this.address.country,
+                this.address.state,
+                this.address.city,
+                this.address.address
+            )
+        }
         return orderRepository.save(order).id
     }
 }

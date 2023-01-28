@@ -45,3 +45,15 @@ class ShippingConverter : AttributeConverter<String, String?> {
         const val NOT_EXIST_ADDRESS = ""
     }
 }
+
+@Converter
+class AmountConverter : AttributeConverter<Long, BigInteger> {
+    override fun convertToDatabaseColumn(amount: Long) = amount.toBigInteger()
+
+    override fun convertToEntityAttribute(amount: BigInteger?) = 
+        amount?.let { amount.toLong() } ?: ZERO
+
+    companion object {
+        const val ZERO = 0L
+    }
+}
