@@ -27,8 +27,7 @@ class Order(
     @Enumerated(EnumType.STRING)
     private val state: OrderState = OrderState.PAYMENT_WAITING,
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
+    @Embedded
     private val address: Address,
     
     @Column(name = "ordering_time")
